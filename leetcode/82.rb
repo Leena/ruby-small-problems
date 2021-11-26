@@ -9,11 +9,26 @@ class ListNode
 end
 
 def delete_duplicates(head)
+dummy = ListNode.new(0, head)
+prev = dummy
 
+while head != nil
+  if head.next != nil && head.val == head.next.val
+    while head.next != nil && head.val == head.next.val
+      head = head.next
+    end
+    prev.next = head.next 
+  else 
+    prev = prev.next 
+  end
+  head = head.next 
 end
 
-head = [1,2,3,3,4,4,5]
-p delete_duplicates(head) == [1, 2, 5]
+dummy.next
+end
 
-head = [1,1,1,2,3]
-p delete_duplicates(head) == [2,3]
+test_one = [1,2,3,3,4,4,5]
+delete_duplicates(head) == [1, 2, 5]
+
+test_two = [1,1,1,2,3]
+delete_duplicates(head) == [2,3]
