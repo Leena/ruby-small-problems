@@ -8,10 +8,10 @@ def product_except_self(nums)
   end
   
   product = 1
-  
+
   (nums.size - 1).downto(1).each do |idx|
     results[idx - 1] *= (product * nums[idx])
-      product *= nums[idx]
+    product *= nums[idx]
   end
   
   results
